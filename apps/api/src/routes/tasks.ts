@@ -21,7 +21,10 @@ export async function taskRoutes(app: FastifyInstance) {
     if (!parsed.success) {
       return reply.status(400).send({ error: 'Validation failed', code: 'VALIDATION_ERROR' });
     }
-    const [task] = await db.insert(tasks).values(parsed.data).returning();
+    const [task] = await db.insert(tasks).values({
+      ...parsed.data,
+      dueDate: parsed.data.dueDate ? new Date(parsed.data.dueDate) : null,
+    }).returning();
     return reply.status(201).send({ data: task });
   });
 
@@ -32,7 +35,13 @@ export async function taskRoutes(app: FastifyInstance) {
     }
     const [task] = await db
       .update(tasks)
-      .set({ ...parsed.data, updatedAt: new Date() })
+      .set({
+        ...parsed.data,
+        dueDate: parsed.data.dueDate !== undefined
+          ? (parsed.data.dueDate ? new Date(parsed.data.dueDate) : null)
+          : undefined,
+        updatedAt: new Date(),
+      })
       .where(eq(tasks.id, req.params.id))
       .returning();
     if (!task) return reply.status(404).send({ error: 'Not found', code: 'NOT_FOUND' });

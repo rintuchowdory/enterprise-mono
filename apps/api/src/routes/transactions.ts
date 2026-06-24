@@ -345,10 +345,10 @@ export async function transactionRoutes(app: FastifyInstance) {
         .set({
           status: 'approved',
           approvedAt: new Date(),
-          approvedBy: req.body?.approvedBy || 'system',
+          approvedBy: (req.body as any)?.approvedBy || 'system',
         })
         .where(eq(approvals.id, req.params.id))
-        .returning();
+        .returning() as unknown as (typeof approvals.$inferSelect)[];
 
       const [transaction] = await db
         .select()

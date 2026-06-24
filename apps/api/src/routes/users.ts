@@ -1,5 +1,5 @@
 import { FastifyInstance } from 'fastify';
-import { eq } from 'drizzle-orm';
+import { eq, count } from 'drizzle-orm';
 import { db } from '../db/index.js';
 import { users } from '../db/schema.js';
 import { CreateUserSchema, UpdateUserSchema } from '@repo/shared';
@@ -12,7 +12,7 @@ export async function userRoutes(app: FastifyInstance) {
     const offset = (page - 1) * limit;
 
     const rows = await db.select().from(users).limit(limit).offset(offset);
-    const total = await db.$count(users);
+    const [{ total }] = await db.select({ total: count() }).from(users);
 
     const response: ApiResponse<typeof rows> = {
       data: rows,
