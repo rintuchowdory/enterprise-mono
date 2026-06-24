@@ -4,6 +4,7 @@ import cors from '@fastify/cors';
 import helmet from '@fastify/helmet';
 import { userRoutes } from './routes/users.js';
 import { taskRoutes } from './routes/tasks.js';
+import { transactionRoutes } from './routes/transactions.js';
 
 const app = Fastify({ logger: true });
 
@@ -14,6 +15,7 @@ app.get('/health', async () => ({ status: 'ok', timestamp: new Date().toISOStrin
 
 await app.register(userRoutes, { prefix: '/api/v1' });
 await app.register(taskRoutes, { prefix: '/api/v1' });
+await app.register(transactionRoutes, { prefix: '/api/v1' });
 
 const port = Number(process.env.PORT) || 3001;
 try {
