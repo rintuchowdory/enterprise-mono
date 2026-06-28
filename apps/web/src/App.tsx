@@ -17,9 +17,9 @@ const NAV: { id: Page; label: string; icon: React.ReactNode }[] = [
 function Placeholder({ title }: { title: string }) {
   return (
     <div className="flex flex-col items-center justify-center h-64 gap-3">
-      <ChevronRight size={28} className="text-slate-700" />
-      <h1 className="text-xl font-semibold text-slate-100">{title}</h1>
-      <p className="text-sm text-slate-500">Coming soon — same pattern as tasks.</p>
+      <ChevronRight size={28} className="text-red-400" />
+      <h1 className="text-xl font-semibold text-red-900">{title}</h1>
+      <p className="text-sm text-red-600">Coming soon — same pattern as tasks.</p>
     </div>
   );
 }
@@ -28,13 +28,13 @@ export function App() {
   const [page, setPage] = useState<Page>('tasks');
 
   return (
-    <div className="min-h-screen flex bg-[#0f1117]">
+    <div className="min-h-screen flex bg-gradient-to-br from-white via-red-50 to-red-100">
       {/* Sidebar */}
-      <aside className="w-52 bg-[#0b0f1a] border-r border-white/[0.06] flex flex-col flex-shrink-0">
+      <aside className="w-52 bg-gradient-to-b from-red-900 to-red-800 border-r border-red-700 flex flex-col flex-shrink-0">
         {/* Logo */}
         <div className="px-5 pt-5 pb-6">
-          <span className="text-brand-500 font-semibold text-[15px] tracking-tight">enterprise</span>
-          <span className="text-slate-600 font-mono text-[11px] ml-1">/mono</span>
+          <span className="text-white font-semibold text-[15px] tracking-tight">enterprise</span>
+          <span className="text-red-300 font-mono text-[11px] ml-1">/mono</span>
         </div>
 
         {/* Nav */}
@@ -45,12 +45,12 @@ export function App() {
               onClick={() => setPage(id)}
               className={`relative flex items-center gap-2.5 px-3 py-2 rounded-lg text-[13px] transition-all text-left w-full
                 ${page === id
-                  ? 'bg-brand-500/10 text-brand-500 font-medium'
-                  : 'text-slate-500 hover:text-slate-200 hover:bg-white/[0.04]'
+                  ? 'bg-white/20 text-white font-medium'
+                  : 'text-red-200 hover:text-white hover:bg-white/10'
                 }`}
             >
               {page === id && (
-                <span className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-[18px] bg-brand-500 rounded-r-full" />
+                <span className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-[18px] bg-white rounded-r-full" />
               )}
               <span className="opacity-90">{icon}</span>
               {label}
@@ -59,12 +59,12 @@ export function App() {
         </nav>
 
         {/* Bottom user row */}
-        <div className="mt-auto px-3 py-4 border-t border-white/[0.05]">
+        <div className="mt-auto px-3 py-4 border-t border-red-700">
           <div className="flex items-center gap-2.5 px-2">
-            <div className="w-7 h-7 rounded-full bg-brand-500/20 flex items-center justify-center text-[10px] font-semibold text-brand-500 flex-shrink-0">
+            <div className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center text-[10px] font-semibold text-white flex-shrink-0">
               RC
             </div>
-            <span className="text-[12px] text-slate-500 truncate">Rintu C.</span>
+            <span className="text-[12px] text-red-200 truncate">Rintu C.</span>
           </div>
         </div>
       </aside>
