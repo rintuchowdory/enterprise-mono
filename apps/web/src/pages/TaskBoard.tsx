@@ -228,7 +228,7 @@ export function TaskBoard() {
       {/* Columns */}
       <div className="grid grid-cols-3 gap-5">
         {STATUS_COLS.map((col) => {
-          const colTasks = tasks.filter((t) => t.status === col);
+          const colTasks = tasks.filter((t: any) => t.status === col);
           const meta = STATUS_META[col];
           return (
             <div key={col} className="bg-[#141720] rounded-2xl p-4 border border-white/[0.05] flex flex-col gap-3">
@@ -246,7 +246,7 @@ export function TaskBoard() {
               </div>
 
               {/* Cards */}
-              {colTasks.map((task) => (
+              {colTasks.map((task: any) => (
                 <TaskCard key={task.id} task={task} />
               ))}
 

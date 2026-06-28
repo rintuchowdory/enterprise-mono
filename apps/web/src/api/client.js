@@ -1,7 +1,10 @@
 import axios from 'axios';
 const api = axios.create({
-    baseURL: import.meta.env.VITE_API_URL || 'http://localhost:3001',
+    baseURL: 'http://localhost:3001',
     headers: { 'Content-Type': 'application/json' },
 });
 api.interceptors.response.use((res) => res, (err) => Promise.reject(err));
-export { api };
+export const get = (url) => api.get(url);
+export const post = (url, data) => api.post(url, data);
+export const patch = (url, data) => api.patch(url, data);
+export const del = (url) => api.delete(url);
