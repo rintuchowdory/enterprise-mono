@@ -125,7 +125,7 @@ function NewTaskModal({
   const handleSubmit = () => {
     if (!title.trim()) return;
     createTask.mutate(
-      { title: title.trim(), description: description.trim() || undefined, priority, status },
+      { title: title.trim(), description: description.trim() || undefined, priority, status, assigneeId: null, dueDate: null },
       { onSuccess: onClose }
     );
   };

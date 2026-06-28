@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { TaskBoard } from './pages/TaskBoard';
 import {
-  LayoutKanban, Users, Wallet, Bot, ScrollText, ChevronRight,
+  Kanban, Users, Wallet, Bot, ScrollText, ChevronRight,
 } from 'lucide-react';
 
 type Page = 'tasks' | 'users' | 'treasury' | 'agents' | 'audit';
 
 const NAV: { id: Page; label: string; icon: React.ReactNode }[] = [
-  { id: 'tasks',    label: 'Tasks',     icon: <LayoutKanban size={15} /> },
+  { id: 'tasks',    label: 'Tasks',     icon: <Kanban size={15} /> },
   { id: 'users',    label: 'Users',     icon: <Users size={15} /> },
   { id: 'treasury', label: 'Treasury',  icon: <Wallet size={15} /> },
   { id: 'agents',   label: 'Agents',    icon: <Bot size={15} /> },
