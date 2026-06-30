@@ -7,6 +7,7 @@
     "jsx": "react-jsx",
     "strict": true,
     "skipLibCheck": true,
+    "noEmit": true,
     "paths": {
       "@repo/shared": ["../../packages/shared/src/index.ts"],
       "@repo/ui": ["../../packages/ui/src/index.ts"]

@@ -1,7 +1,10 @@
 import axios from 'axios';
 
+// Relative path: in dev this is proxied by Vite to the local API (see
+// vite.config.ts), and in production it resolves to the same Vercel
+// deployment's serverless function — no hardcoded host, no CORS issue.
 const api = axios.create({
-  baseURL: 'http://localhost:3001',
+  baseURL: '/api/v1',
   headers: { 'Content-Type': 'application/json' },
 });
 
