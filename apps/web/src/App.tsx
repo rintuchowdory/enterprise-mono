@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import { TaskBoard } from './pages/TaskBoard';
+import { TaskBoard }   from './pages/TaskBoard';
+import { AgentsPage }  from './pages/AgentsPage';
+import { UsersPage }   from './pages/UsersPage';
 import {
   Kanban, Users, Wallet, Bot, ScrollText, ChevronRight,
 } from 'lucide-react';
@@ -72,9 +74,9 @@ export function App() {
       {/* Main */}
       <main className="flex-1 overflow-auto">
         {page === 'tasks'    && <TaskBoard />}
-        {page === 'users'    && <Placeholder title="Users" />}
+        {page === 'users'    && <UsersPage />}
         {page === 'treasury' && <Placeholder title="Treasury" />}
-        {page === 'agents'   && <Placeholder title="Agents" />}
+        {page === 'agents'   && <AgentsPage />}
         {page === 'audit'    && <Placeholder title="Audit Log" />}
       </main>
     </div>

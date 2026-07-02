@@ -5,6 +5,7 @@ import helmet from '@fastify/helmet';
 import { userRoutes } from './routes/users.js';
 import { taskRoutes } from './routes/tasks.js';
 import { transactionRoutes } from './routes/transactions.js';
+import { agentRoutes } from './routes/agents.js';
 
 export async function buildApp(): Promise<FastifyInstance> {
   const app = Fastify({ logger: true });
@@ -24,6 +25,7 @@ export async function buildApp(): Promise<FastifyInstance> {
   await app.register(userRoutes, { prefix: '/api/v1' });
   await app.register(taskRoutes, { prefix: '/api/v1' });
   await app.register(transactionRoutes, { prefix: '/api/v1' });
+  await app.register(agentRoutes, { prefix: '/api/v1' });
 
   return app;
 }
